@@ -10,7 +10,7 @@
     
     --gradient-main: linear-gradient(135deg, #6F2DBD 0%, #A663CC 100%);
     
-    /* Light Theme */
+    /* Light Theme Colors */
     --bg-body: #F8F9FD;
     --bg-glass: rgba(255, 255, 255, 0.7);
     --bg-card: #FFFFFF;
@@ -22,19 +22,6 @@
     --hover-bg: rgba(111, 45, 189, 0.05);
 }
 
-[data-theme="dark"] {
-    /* Dark Theme */
-    --bg-body: #0f0b15;
-    --bg-glass: rgba(20, 15, 30, 0.6);
-    --bg-card: rgba(30, 25, 45, 0.5);
-    --text-main: #ffffff;
-    --text-muted: #a0a0c0;
-    --border: rgba(255, 255, 255, 0.1);
-    --shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-    --nav-bg: rgba(15, 11, 21, 0.95);
-    --hover-bg: rgba(255, 255, 255, 0.05);
-}
-
 * { margin: 0; padding: 0; box-sizing: border-box; transition: all 0.3s ease; }
 
 body {
@@ -43,6 +30,15 @@ body {
     color: var(--text-main);
     overflow-x: hidden;
     position: relative;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* Touch targets enhancement for mobile */
+a, button {
+    touch-action: manipulation;
 }
 
 /* =========================================
@@ -75,8 +71,8 @@ body {
 }
 
 .navbar-brand {
-    font-weight: 1000;
-    font-size: 1.6rem;
+    font-weight: 800;
+    font-size: 1.4rem;
     background: var(--gradient-main);
     -webkit-background-clip: text;
     background-clip: text;
@@ -85,25 +81,13 @@ body {
 }
 
 .nav-link {
-    font-weight: 1000;
+    font-weight: 700;
     color: var(--text-muted) !important;
     margin: 0 12px;
     font-size: 0.95rem;
     padding: 10px 0;
 }
 .nav-link:hover, .nav-link.active { color: var(--primary) !important; }
-
-.btn-theme {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    border: 1px solid var(--border);
-    background: transparent;
-    color: var(--text-main);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    margin-right: 12px;
-}
-.btn-theme:hover { background: var(--bg-card); border-color: var(--primary); }
 
 .btn-primary-custom {
     background: var(--gradient-main);
@@ -115,6 +99,7 @@ body {
     box-shadow: 0 5px 15px rgba(111, 45, 189, 0.3);
     text-decoration: none;
     white-space: nowrap;
+    display: inline-block;
 }
 .btn-primary-custom:hover {
     transform: translateY(-2px);
@@ -122,11 +107,32 @@ body {
     color: white;
 }
 
-/* =========================================
-   4. HERO SECTION
-   ========================================= */
-.hero { padding: 60px 0; }
+.btn-outline-custom {
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--text-main);
+    padding: 11px 28px;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    transition: all 0.3s;
+}
+.btn-outline-custom:hover {
+    background: var(--primary);
+    color: white;
+}
 
+/* =========================================
+   4. LAYOUT & TYPOGRAPHY SCALING
+   ========================================= */
+.section-padding { padding: 80px 0; }
+.section-title { font-weight: 800; font-size: 2.4rem; letter-spacing: -1px; }
+
+#academic-hub, #programs { scroll-margin-top: 80px; }
+/* =========================================
+   5. HERO SECTION
+   ========================================= */
 .hero h1 {
     font-size: 3.0rem;
     font-weight: 800;
@@ -147,16 +153,13 @@ body {
 }
 
 .hero-img-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; justify-content: center; align-items: center;
     position: relative;
-    margin-top: 40px;
 }
 
 .hero-img {
     width: 100%;
-    max-width: 360px; 
+    max-width: 350px; 
     height: auto;
     filter: drop-shadow(0 20px 40px rgba(111, 45, 189, 0.3)); 
     animation: floatImage 6s ease-in-out infinite;
@@ -177,7 +180,7 @@ body {
 }
 
 /* =========================================
-   5. CARDS
+   6. CARDS & UTILITIES
    ========================================= */
 .glass-card {
     background: rgba(255, 255, 255, 0.65);
@@ -190,16 +193,9 @@ body {
     position: relative;
     overflow: hidden;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    display: flex; flex-direction: column; justify-content: flex-start;
     box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
     cursor: pointer;
-}
-
-[data-theme="dark"] .glass-card {
-    background: rgba(30, 30, 40, 0.6);
-    border-color: rgba(255, 255, 255, 0.08);
 }
 
 .glass-card:hover {
@@ -208,242 +204,115 @@ body {
     border-color: rgba(111, 45, 189, 0.3);
     box-shadow: 0 30px 60px -12px rgba(111, 45, 189, 0.15);
 }
-[data-theme="dark"] .glass-card:hover {
-    background: rgba(40, 40, 55, 0.8);
-    border-color: rgba(139, 92, 246, 0.3);
-    box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
-}
 
 .card-icon {
-    width: 68px;
-    height: 68px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.75rem;
-    color: white;
-    /* Center in card if needed */
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 24px;
+    width: 68px; height: 68px; border-radius: 20px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.75rem; color: white;
+    margin: 0 auto 24px auto;
     box-shadow: 0 12px 24px -8px rgba(0,0,0,0.3);
     transition: transform 0.4s ease;
 }
 
-.glass-card:hover .card-icon {
-    transform: scale(1.1) rotate(-5deg);
-}
+.glass-card:hover .card-icon { transform: scale(1.1) rotate(-5deg); }
 
-.glass-card h4 {
-    font-weight: 800;
-    font-size: 1.35rem;
-    margin-bottom: 12px;
-    letter-spacing: -0.5px;
-    color: var(--text-main);
-    text-align: center;
-}
-
-.glass-card p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 30px;
-    flex-grow: 1;
-    text-align: center;
-}
+.glass-card h4 { font-weight: 800; font-size: 1.35rem; margin-bottom: 12px; letter-spacing: -0.5px; text-align: center; }
+.glass-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 30px; flex-grow: 1; text-align: center; }
 
 .card-action {
-    font-weight: 700;
-    font-size: 0.95rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    transition: all 0.3s ease;
-    width: 100%;
+    font-weight: 700; font-size: 0.95rem; text-decoration: none;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    transition: all 0.3s ease; width: 100%;
 }
-
 .card-action i { transition: transform 0.3s ease; }
 .glass-card:hover .card-action i { transform: translateX(6px); }
 
-/* =========================================
-   6. UTILITIES & DEGREE COLORS (NEW)
-   ========================================= */
-.bg-light { background-color: rgba(255,255,255,0.5) !important; }
-
-/* BBA Colors */
+/* Colors */
 .text-bba { color: #EC4899; }
 .bg-bba { background: linear-gradient(135deg, #EC4899, #DB2777); color: white; }
-
-/* MIT Colors */
 .text-mit { color: #8B5CF6; }
 .bg-mit { background: linear-gradient(135deg, #8B5CF6, #6D28D9); color: white; }
-
-/* BCOM Colors */
 .text-bcom { color: #F59E0B; }
 .bg-bcom { background: linear-gradient(135deg, #F59E0B, #D97706); }
-
 
 /* =========================================
    7. FOOTER
    ========================================= */
 footer {
-    margin-top: 60px;
-    padding: 20px 0;
+    margin-top: 40px;
+    padding: 25px 0;
     border-top: 1px solid var(--border);
     background: rgba(255,255,255,0.02);
 }
 
-/* Honors Colors */
-.border-bronze { border-color: #CD7F32 !important; }
-.text-bronze { color: #CD7F32 !important; }
-.bg-bronze { background-color: #CD7F32 !important; }
-
-/* Soft Backgrounds for Stats */
-.bg-soft-primary { background: rgba(13, 110, 253, 0.1); color: #0d6efd; }
-.bg-soft-info    { background: rgba(13, 202, 240, 0.1); color: #0dcaf0; }
-.bg-soft-success { background: rgba(25, 135, 84, 0.1);  color: #198754; }
-.bg-soft-danger  { background: rgba(220, 53, 69, 0.1);  color: #dc3545; }
-
-
 /* =========================================
-   FIX FOR NAVBAR COVERING TITLES
+   8. MOBILE RESPONSIVENESS
    ========================================= */
 
-#academic-hub {
-    scroll-margin-top: 100px; /* Adjust this number if needed */
-}
-
-/* Optional: Makes the scroll slide smoothly instead of jumping */
-html {
-    scroll-behavior: smooth;
-}
-/* =========================================
-   8. MOBILE RESPONSIVENESS (CONSOLIDATED)
-   ========================================= */
-
-/* --- Tablet & Mobile (Below 992px) --- */
+/* Tablets & Small Laptops (Max 991px) */
 @media (max-width: 991px) {
     .section-padding { padding: 60px 0; }
     
-    .glass-card {
-        padding: 30px 20px; /* Reduce padding */
-        margin-bottom: 20px;
-    }
-
-    .hero h1 { font-size: 2.5rem; }
+    .hero h1 { font-size: 2.4rem; }
+    .hero p { font-size: 1rem; margin: 0 auto 25px auto; }
     
-    /* Center hero on mobile */
-    .hero { text-align: center; }
-    .hero .d-flex { justify-content: center; }
-    .hero-img { max-width: 280px; margin-top: 30px; }
-    
-    /* Mobile Navbar Card Style */
     .navbar-collapse {
         background: var(--bg-card);
-        padding: 20px;
-        border-radius: 16px;
-        margin-top: 10px;
-        box-shadow: var(--shadow);
+        padding: 20px; border-radius: 16px;
+        margin-top: 10px; box-shadow: var(--shadow);
         border: 1px solid var(--border);
     }
 }
 
-/* --- Mobile Phones (Below 768px) --- */
+/* Mobile Phones (Max 768px) */
 @media (max-width: 768px) {
+    .section-padding { padding: 45px 0; }
+    .section-title { font-size: 2rem; }
     
-    /* Typography Adjustments */
     .hero h1 { font-size: 2rem; }
-    .display-6 { font-size: 1.8rem; }
+    .hero-img { max-width: 260px; margin-top: 20px; }
 
-    /* Card & Icon Adjustments */
-    .glass-card {
-        padding: 24px 16px; 
-        border-radius: 24px;
-    }
-    
-    .card-icon {
-        width: 50px; height: 50px;
-        font-size: 1.2rem; margin-bottom: 16px;
-    }
-}
-
-/* --- SMALL MOBILE FIXES (Table & Layout) (Below 500px) --- */
-@media (max-width: 500px) {
-
-    /* 1. Force Card Padding Small */
-    #academic-hub .glass-card {
-        padding: 15px !important;
-    }
-
-    /* 2. TABLE FIXES: Hide 'Status' Column */
-    .table th:nth-child(4),
-    .table td:nth-child(4) {
-        display: none !important;
-    }
-
-    /* 3. Tighten Cell Spacing */
-    .table th, .table td {
-        padding: 10px 5px !important; 
-        font-size: 0.9rem !important; 
-        white-space: nowrap; /* Prevent wrapping */
-    }
-
-    /* 4. Fix Range Column (Remove left gap) */
-    .table th:first-child,
-    .table td:first-child {
-        padding-left: 0 !important;
-        text-align: left;
-    }
-
-    /* 5. Center Grade & Points */
-    .table th:nth-child(2), .table td:nth-child(2),
-    .table th:nth-child(3), .table td:nth-child(3) {
-        text-align: center !important;
-    }
-
-    /* 6. Buttons */
-    .btn-primary-custom {
+    /* Buttons full width on small screens */
+    .btn-primary-custom, .btn-outline-custom {
         width: 100%;
-        margin-bottom: 10px;
+        padding: 12px 20px;
+    }
+
+    .glass-card { padding: 24px 20px; border-radius: 24px; }
+    .card-icon { width: 55px; height: 55px; font-size: 1.4rem; }
+    
+    .mobile-roadmap-card .card-body { padding: 1.25rem !important; }
+    .mobile-roadmap-card h4 { font-size: 1.2rem !important; }
+    .mobile-roadmap-card h5 { font-size: 1.1rem !important; }
+    
+    /* Responsive Table Fixes */
+    .table-wrapper {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+    }
+    .table th, .table td {
+        font-size: 0.9rem;
+        padding: 12px 10px !important;
+        white-space: nowrap;
+    }
+    .table th:first-child, .table td:first-child {
+        padding-left: 15px !important;
     }
 }
 
-/* =========================================
-   MOBILE FIX FOR MODERN CARDS
-   (Paste this at the bottom of your CSS file)
-   ========================================= */
-
-@media (max-width: 768px) {
-    /* 1. Reduce the big whitespace inside the card */
-    .card .card-body {
-        padding: 1.25rem !important; 
-    }
-
-    /* 2. Make the big Title Text smaller for phones */
-    .card h4 {
-        font-size: 1.2rem !important;
-    }
-    .card h5 {
-        font-size: 1.1rem !important;
+/* Extra Small Phones (Max 400px) */
+@media (max-width: 400px) {
+    .section-title { font-size: 1.75rem; }
+    .hero h1 { font-size: 1.8rem; }
+    
+    /* Stack the roadmap status metrics perfectly */
+    .mobile-roadmap-card .row.g-2 > div {
+        margin-bottom: 8px;
     }
     
-    /* 3. Make the icons smaller so they don't look huge */
-    .card .rounded-3[style*="width: 50px"] {
-        width: 40px !important;
-        height: 40px !important;
-    }
-    .card .rounded-3 i {
-        font-size: 1.1rem !important;
-    }
-}
-
-/* For very small phones (iPhone SE, Galaxy Fold) */
-@media (max-width: 380px) {
-    .card .col-4 {
-        width: 100% !important; /* Stack stats vertically */
-        margin-bottom: 5px;
+    .table th, .table td {
+        font-size: 0.85rem;
+        padding: 10px 8px !important;
     }
 }
