@@ -222,14 +222,15 @@
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
       }
-      .gpa-label {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--text-muted);
-        margin-top: 5px;
-        text-transform: uppercase;
-        letter-spacing: 1.5px;
-      }
+.gpa-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 0px; /* Changed from 5px to 0px to pull it up */
+  text-transform: uppercase;
+  letter-spacing: 1px; /* Reduced from 1.5px to make it narrower */
+  line-height: 1.2;
+}
 
       .class-badge {
         margin-top: -22px;
@@ -606,6 +607,15 @@ footer {
         .stat-box div {
           font-size: 1.1rem;
         }
+        .gpa-number {
+    font-size: 2.4rem; /* Reduced from 2.8rem so it doesn't push the label down */
+  }
+
+  .gpa-label {
+    font-size: 0.55rem; /* Make label much smaller on mobile */
+    letter-spacing: 0.5px; /* Tighten letters */
+    margin-top: 2px;
+  }
       }
 
       /* --- SMALL MOBILE OPTIMIZATIONS (Phone) --- */
