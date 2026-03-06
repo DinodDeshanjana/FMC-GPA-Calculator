@@ -567,7 +567,7 @@ footer {
     font-size: 0.95rem;
     color: var(--text-muted);
     line-height: 1.6;
-    text-align: left;
+    text-align: justify;
     /* Overrides the center alignment from earlier cards */
 }
 
